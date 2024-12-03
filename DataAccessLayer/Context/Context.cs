@@ -24,7 +24,12 @@ public class Context : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(
-            "Server=localhost,1433; Database=cSharpEksamen; User=SA; Password=SuperAvocado5; TrustServerCertificate=True; MultipleActiveResultSets=True");
+            "Server=localhost,1433; " +
+            "Database=cSharpEksamen; " +
+            "User=SA; " +
+            "Password=SuperAvocado5; " +
+            "TrustServerCertificate=True; " +
+            "MultipleActiveResultSets=True");
         optionsBuilder.LogTo(message => Debug.WriteLine(message));
     }
     

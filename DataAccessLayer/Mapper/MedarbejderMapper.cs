@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using DataAccessLayer.Model;
 using DTO.Model;
+using Afdeling = DataAccessLayer.Model.Afdeling;
 using Medarbejder = DataAccessLayer.Model.Medarbejder;
 
 namespace DataAccessLayer.Mapper;
@@ -37,9 +38,9 @@ internal class MedarbejderMapper
         return retur;
     }
     
-    internal static DTO.Model.AfdelingDetail AfdelingDetail(Afdeling afdeling)
+    internal static DTO.Model.Afdeling AfdelingDetail(Afdeling afdeling)
     {
-        DTO.Model.AfdelingDetail retur = new DTO.Model.AfdelingDetail();
+        DTO.Model.Afdeling retur = new DTO.Model.Afdeling();
         retur.AfdelingsNavn = afdeling.AfdelingsNavn;
         retur.AfdelingsNr = afdeling.AfdelingsNr;
         retur.medarbejderList = MedarbejderMapper.Map(afdeling.medarbejderList);

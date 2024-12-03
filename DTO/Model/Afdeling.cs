@@ -1,6 +1,6 @@
 namespace DTO.Model;
 
-public class AfdelingDetail
+public class Afdeling
 {
     public string AfdelingsNavn { get; set; }
     public int AfdelingsNr { get; set; }
