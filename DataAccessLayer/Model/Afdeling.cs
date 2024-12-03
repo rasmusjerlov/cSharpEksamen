@@ -2,7 +2,7 @@ using DataAccessLayer.Model;
 
 namespace DataAccessLayer.Model;
 
-internal class Afdeling
+public class Afdeling
 {
     public string AfdelingsNavn { get; set; }
     public int AfdelingsNr { get; set; }
@@ -26,7 +26,7 @@ internal class Afdeling
         }
     }
 
-    public void deleteMedarbejder(Medarbejder medarbejder)
+    public void fjernMedarbejder(Medarbejder medarbejder)
     {
         if (medarbejderList.Contains(medarbejder))
         {

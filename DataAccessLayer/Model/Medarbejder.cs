@@ -1,6 +1,9 @@
-namespace DataAccessLayer.Model;
 
-internal class Medarbejder
+namespace DataAccessLayer.Model
+{
+    
+
+public class Medarbejder
 {
     public string Navn { get; set; }
     public string Cpr { get; set; }
@@ -21,4 +24,5 @@ internal class Medarbejder
     {
         return $"Navn: {Navn}, CPR: {Cpr}, Initialer: {Initialer}";
     }
+}
 }

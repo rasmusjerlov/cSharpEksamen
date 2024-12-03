@@ -9,7 +9,7 @@ public class MedarbejderRepository
 {
     public static Medarbejder hentMedarbejder(string initialer)
     {
-        using (MedarbejderContext context = new MedarbejderContext())
+        using (Context.Context context = new Context.Context())
         {
             return MedarbejderMapper.Map(context.Medarbejdere.Find(initialer));
         }
@@ -17,7 +17,7 @@ public class MedarbejderRepository
     
     public static void tilfojMedarbejder(DTO.Model.Medarbejder medarbejder)
     {
-        using (MedarbejderContext context = new MedarbejderContext())
+        using (Context.Context context = new Context.Context())
         {
             DataAccessLayer.Model.Medarbejder datameMedarbejder = MedarbejderMapper.Map(medarbejder);
             context.Medarbejdere.Add(datameMedarbejder);
@@ -27,7 +27,7 @@ public class MedarbejderRepository
 
     public static void opdaterMedarbejder(Medarbejder medarbejder)
     {
-        using (MedarbejderContext context = new MedarbejderContext())
+        using (Context.Context context = new Context.Context())
         {
             Model.Medarbejder dataMedarbejder = context.Medarbejdere.Find(medarbejder.Initialer);
             MedarbejderMapper.Update(medarbejder, dataMedarbejder);
@@ -37,7 +37,7 @@ public class MedarbejderRepository
 
     public static List<Medarbejder> hentAlleMedarbejdere()
     {
-        using (MedarbejderContext context = new MedarbejderContext())
+        using (Context.Context context = new Context.Context())
         {
             return context.Medarbejdere
                 .Select(m => MedarbejderMapper.Map(m))

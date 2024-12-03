@@ -1,17 +1,29 @@
-using cSharpEksamen.Models;
 
 namespace DataAccessLayer.Model;
 
-internal class Tidsregistrering
+public class Tidsregistrering
 {
-    public DateTime startTid { get; set; }
-    public DateTime slutTid { get; set; }
-    public Medarbejder medarbejder { get; set; }
+    public DateTime StartTid { get; set; }
+    public DateTime SlutTid { get; set; }
+    public Medarbejder Medarbejder { get; set; }
+    public Sag sag { get; set; }
 
     public Tidsregistrering(DateTime startTid, DateTime slutTid, Medarbejder medarbejder)
     {
-        this.startTid = startTid;
-        this.slutTid = slutTid;
-        this.medarbejder = medarbejder;
+        this.StartTid = startTid;
+        this.SlutTid = slutTid;
+        this.Medarbejder = medarbejder;
+    }
+
+    public Tidsregistrering()
+    {
+    }
+    
+    public void setSag(Sag sag)
+    {
+        if (!sag.TidsregistreringerList.Contains(this))
+        {
+            sag.TidsregistreringerList.Add(this);
+        }
     }
 }

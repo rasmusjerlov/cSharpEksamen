@@ -1,10 +1,9 @@
 using System.ComponentModel;
-using cSharpEksamen.Models;
-
-namespace DataAccessLayer.Mapper;
 using DataAccessLayer.Model;
 using DTO.Model;
 using Medarbejder = DataAccessLayer.Model.Medarbejder;
+
+namespace DataAccessLayer.Mapper;
 internal class MedarbejderMapper
 {
     public static DTO.Model.Medarbejder Map(Medarbejder medarbejder)

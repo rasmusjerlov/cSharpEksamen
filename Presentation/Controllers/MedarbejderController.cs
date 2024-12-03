@@ -5,11 +5,11 @@ namespace cSharpEksamen.Controllers;
 
 public class MedarbejderController : Controller
 {
-    private readonly MedarbejderContext _medarbejderContext;
+    private readonly Context _context;
     // GET
     public IActionResult MedarbejderView()
     {
-        var medarbejdere = _medarbejderContext.Medarbejdere.ToList();
+        var medarbejdere = _context.Medarbejdere.ToList();
         return View(medarbejdere);
     }
 }
