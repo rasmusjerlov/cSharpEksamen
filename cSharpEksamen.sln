@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{84D3FE72-5E06-4341-9494-FD625CCABEDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{3E81E9FF-FC36-4B01-AD1C-11464633D977}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +30,5 @@ Global
 		{84D3FE72-5E06-4341-9494-FD625CCABEDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84D3FE72-5E06-4341-9494-FD625CCABEDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84D3FE72-5E06-4341-9494-FD625CCABEDA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E81E9FF-FC36-4B01-AD1C-11464633D977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E81E9FF-FC36-4B01-AD1C-11464633D977}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E81E9FF-FC36-4B01-AD1C-11464633D977}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E81E9FF-FC36-4B01-AD1C-11464633D977}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

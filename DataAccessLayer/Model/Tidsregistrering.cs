@@ -1,6 +1,8 @@
-namespace cSharpEksamen.Models;
+using cSharpEksamen.Models;
 
-public class Tidsregistrering
+namespace DataAccessLayer.Model;
+
+internal class Tidsregistrering
 {
     public DateTime startTid { get; set; }
     public DateTime slutTid { get; set; }

@@ -1,7 +1,8 @@
 using System.Diagnostics;
-using cSharpEksamen.Models;
-namespace DataAccessLayer.Context;
+using DataAccessLayer.Model;
+
 using Microsoft.EntityFrameworkCore;
+namespace DataAccessLayer.Context;
 
 public class MedarbejderContext : DbContext
 {

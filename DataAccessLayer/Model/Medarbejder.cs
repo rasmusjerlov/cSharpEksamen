@@ -1,6 +1,6 @@
-namespace cSharpEksamen.Models;
+namespace DataAccessLayer.Model;
 
-public class Medarbejder
+internal class Medarbejder
 {
     public string Navn { get; set; }
     public string Cpr { get; set; }

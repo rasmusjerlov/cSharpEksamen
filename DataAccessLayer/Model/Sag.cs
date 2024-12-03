@@ -1,6 +1,6 @@
 namespace cSharpEksamen.Models;
 
-public class Sag
+internal class Sag
 {
     public int Sagsnr { get; set; }
     public string Overskrift { get; set; }
