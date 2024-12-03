@@ -17,7 +17,8 @@ internal class MedarbejderMapper
         return new Medarbejder
         {
             Navn = dtoMedarbejder.Navn,
-            Cpr = dtoMedarbejder.Cpr
+            Cpr = dtoMedarbejder.Cpr,
+            Initialer = dtoMedarbejder.Initialer
         };
     }
 

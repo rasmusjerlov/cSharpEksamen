@@ -8,12 +8,11 @@ public class Sag
     public Afdeling Afdeling { get; set; }
     public List<Tidsregistrering> TidsregistreringerList { get; set; }
 
-    public Sag(int sagsnr, string overskrift, string beskrivelse, Afdeling afdeling)
+    public Sag(int sagsnr, string overskrift, string beskrivelse)
     {
         Sagsnr = sagsnr;
         Overskrift = overskrift;
         Beskrivelse = beskrivelse;
-        Afdeling = afdeling;
     }
 
     public Sag()

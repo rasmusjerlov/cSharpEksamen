@@ -1,14 +1,10 @@
+
 using BusinessLayer.BLL;
-using DataAccessLayer.Context;
-using DataAccessLayer.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<Context>();
-
-Context context = new Context();
 
 var app = builder.Build();
 

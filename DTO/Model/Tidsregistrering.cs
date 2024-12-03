@@ -17,11 +17,11 @@ public class Tidsregistrering
     {
     }
     
-    public void setSag(Sag sag)
-    {
-        if (!sag.TidsregistreringerList.Contains(this))
-        {
-            sag.TidsregistreringerList.Add(this);
-        }
-    }
+    // public void setSag(Sag sag)
+    // {
+    //     if (!sag.TidsregistreringerList.Contains(this))
+    //     {
+    //         sag.TidsregistreringerList.Add(this);
+    //     }
+    // }
 }
