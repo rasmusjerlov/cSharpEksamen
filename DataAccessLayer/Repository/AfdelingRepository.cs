@@ -5,11 +5,11 @@ namespace DataAccessLayer.Repository;
 
 public class AfdelingRepository
 {
-    public static Afdeling hentAfdeling(int afdelingsnr)
+    public static Afdeling hentAfdeling(int afdelingnr)
     {
         using (Context.Context context = new Context.Context())
         {
-            return AfdelingMapper.Map(context.Afdelinger.Find(afdelingsnr));
+            return AfdelingMapper.Map(context.Afdelinger.Find(afdelingnr));
         }
     }
     
@@ -27,7 +27,7 @@ public class AfdelingRepository
     {
         using (Context.Context context = new Context.Context())
         {
-            Model.Afdeling dataAfdeling = context.Afdelinger.Find(afdeling.AfdelingsNr);
+            Model.Afdeling dataAfdeling = context.Afdelinger.Find(afdeling.AfdelingNr);
             AfdelingMapper.Update(afdeling, dataAfdeling);
             context.SaveChanges();
         }

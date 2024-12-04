@@ -1,0 +1,75 @@
+@model cSharpEksamen.Presentation.Models.TidsregistreringViewModel
+
+@{
+    ViewBag.Title = "Tidsregistrering";
+}
+
+<h2>Tidsregistrering</h2>
+@using (Html.BeginForm("Index", "Tidsregistrering", FormMethod.Post))
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>StartTid</th>
+            <th>SlutTid</th>
+            <th>Medarbejder</th>
+            <th>Sag</th>
+            <th>Afdeling</th>
+            <th>Button</th>
+            <th>Button</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(model => model.StartTid, new { @class = "form-control", type = "datetime-local" })
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.SlutTid, new { @class = "form-control", type = "datetime-local" })
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.MedarbejderInitialer, new SelectList(ViewBag.Medarbejdere, "Initialer", "Navn"), new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.SagId, new SelectList(ViewBag.Sager, "SagId", "Overskrift"), new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.Afdeling, new SelectList(ViewBag.Afdelinger, "Afdeling", "Navn"), new { @class = "form-control" })
+            </td>
+            <td>
+                <button type="submit" class="submit">Opret Tidsregistrering</button>
+            </td>
+        </tr>
+        </thead>
+    </table>
+}
+
+<tbody>
+@foreach (var item in Model.Tidsregistreringer)
+{
+    <tr>
+        <td>@item.StartTid</td>
+        <td>@item.SlutTid</td>
+        <td>@item.Medarbejder.Initialer</td>
+    </tr>
+}
+</tbody>
+
+<style>
+    .submit {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+
+
+@section Scripts
+{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

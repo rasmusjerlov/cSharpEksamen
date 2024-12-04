@@ -2,15 +2,15 @@ namespace DTO.Model;
 
 public class Afdeling
 {
-    public string AfdelingsNavn { get; set; }
-    public int AfdelingsNr { get; set; }
-    public List<Medarbejder> medarbejderList { get; set; } = new List<Medarbejder>();
+    public string AfdelingNavn { get; set; }
+    public int AfdelingNr { get; set; }
+    public List<Medarbejder> medarbejdere { get; set; } = new List<Medarbejder>();
     public ICollection<Sag> Sager { get; set; }
 
-    public Afdeling(string afdelingsNavn, int afdelingsNr)
+    public Afdeling(string afdelingNavn, int afdelingNr)
     {
-        AfdelingsNavn = afdelingsNavn;
-        AfdelingsNr = afdelingsNr;
+        AfdelingNavn = afdelingNavn;
+        AfdelingNr = afdelingNr;
     }
 
     public Afdeling()

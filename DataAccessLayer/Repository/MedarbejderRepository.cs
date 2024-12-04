@@ -15,7 +15,7 @@ public class MedarbejderRepository
         }
     } 
     
-    public static void tilfojMedarbejder(Medarbejder medarbejder)
+    public static void opretMedarbejder(Medarbejder medarbejder)
     {
         using (Context.Context context = new Context.Context())
         {

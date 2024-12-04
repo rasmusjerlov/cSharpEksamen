@@ -10,9 +10,9 @@ public class MedarbejderBLL
         return MedarbejderRepository.hentMedarbejder(initialer);
     }
 
-    public void tilfojMedarbejder(Medarbejder medarbejder)
+    public void opretMedarbejder(Medarbejder medarbejder)
     {
-        MedarbejderRepository.tilfojMedarbejder(medarbejder);
+        MedarbejderRepository.opretMedarbejder(medarbejder);
     }
     
     public void opdaterMedarbejder(Medarbejder medarbejder)

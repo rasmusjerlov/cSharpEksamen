@@ -6,22 +6,22 @@ internal class AfdelingMapper
 {
     public static DTO.Model.Afdeling Map(Afdeling afdeling)
     {
-        return new DTO.Model.Afdeling(afdeling.AfdelingsNavn, afdeling.AfdelingsNr);
+        return new DTO.Model.Afdeling(afdeling.AfdelingNavn, afdeling.AfdelingNr);
     }
     
     public static Afdeling Map(DTO.Model.Afdeling dtoAfdeling)
     {
         return new Afdeling
         {
-            AfdelingsNavn = dtoAfdeling.AfdelingsNavn,
-            AfdelingsNr = dtoAfdeling.AfdelingsNr
+            AfdelingNavn = dtoAfdeling.AfdelingNavn,
+            AfdelingNr = dtoAfdeling.AfdelingNr
         };
     }
 
     internal static void Update(DTO.Model.Afdeling afdeling, Afdeling dataAfdeling)
     {
-        dataAfdeling.AfdelingsNr = afdeling.AfdelingsNr;
-        dataAfdeling.AfdelingsNavn = afdeling.AfdelingsNavn;
+        dataAfdeling.AfdelingNr = afdeling.AfdelingNr;
+        dataAfdeling.AfdelingNavn = afdeling.AfdelingNavn;
     }
     
     private static List<DTO.Model.Afdeling> Map(List<Afdeling> afdeling)
