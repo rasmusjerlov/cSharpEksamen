@@ -5,8 +5,9 @@ public class Sag
     public int SagId { get; set; }
     public string Overskrift { get; set; }
     public string Beskrivelse { get; set; }
-    
-    public List<Tidsregistrering> TidsregistreringerList { get; set; }
+    public int AfdelingsNr { get; set; }
+    public Afdeling Afdeling { get; set; }
+    public ICollection<Tidsregistrering> Tidsregistreringer { get; set; }
 
     public Sag(int sagid, string overskrift, string beskrivelse)
     {
@@ -21,9 +22,9 @@ public class Sag
 
     public void tilfojTidsregistrering(Tidsregistrering tidsregistrering)
     {
-        if (!TidsregistreringerList.Contains(tidsregistrering))
+        if (!Tidsregistreringer.Contains(tidsregistrering))
         {
-            TidsregistreringerList.Add(tidsregistrering);
+            Tidsregistreringer.Add(tidsregistrering);
         }
     }
 

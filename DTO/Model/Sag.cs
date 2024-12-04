@@ -6,7 +6,7 @@ public class Sag
     public string Overskrift { get; set; }
     public string Beskrivelse { get; set; }
     public string Afdeling { get; set; }
-    // public List<Tidsregistrering> TidsregistreringerList { get; set; }
+    public List<Tidsregistrering> Tidsregistreringer { get; set; }
 
     public Sag(int sagid, string overskrift, string beskrivelse)
     {

@@ -44,7 +44,8 @@ public class Context : DbContext
             new Medarbejder {Navn = "Mikkel", Cpr = "123123123123", Initialer = "MA"},  
             new Medarbejder {Navn = "Abu", Cpr = "123123123123", Initialer = "AB"},
             new Medarbejder {Navn = "Mark", Cpr = "151203813", Initialer = "MK"},
-            new Medarbejder {Navn = "Tully", Cpr = "840852093482", Initialer = "TU"}
+            new Medarbejder {Navn = "Tully", Cpr = "840852093482", Initialer = "TU"},
+            new Medarbejder {Navn = "Rasmus", Cpr = "840852093482", Initialer = "RA"}
         });
         
         modelBuilder.Entity<Afdeling>().HasKey(a => a.AfdelingsNr);
@@ -55,18 +56,21 @@ public class Context : DbContext
         });
         
         modelBuilder.Entity<Sag>().HasKey(s => s.SagId);
+        modelBuilder.Entity<Sag>()
+            .HasOne(s => s.Afdeling)
+            .WithMany(a => a.Sager)
+            .HasForeignKey(s => s.AfdelingsNr);
         modelBuilder.Entity<Sag>().HasData(new Sag[] {
-            new Sag {SagId = 1, Overskrift = "Sag1", Beskrivelse = "Sag for IT afdeling"},
-            new Sag {SagId = 2, Overskrift = "Sag2", Beskrivelse = "Sag for HR afdeling"},
-            new Sag {SagId = 3, Overskrift = "Sag3", Beskrivelse = "Sag for salgsafdeling"}
+            new Sag {SagId = 1, Overskrift = "Sag1", Beskrivelse = "Sag for IT afdeling", AfdelingsNr = 1},
+            new Sag {SagId = 2, Overskrift = "Sag2", Beskrivelse = "Sag for HR afdeling", AfdelingsNr = 2},
+            new Sag {SagId = 3, Overskrift = "Sag3", Beskrivelse = "Sag for salgsafdeling", AfdelingsNr = 3}
         });
         
-        // modelBuilder.Entity<Tidsregistrering>().HasKey(t => t.TidsregistreringId);
-        // modelBuilder.Entity<Tidsregistrering>().HasData(new Tidsregistrering[] {
-        //     new Tidsregistrering {TidsregistreringId = 1, StartTid = DateTime.Now, SlutTid = DateTime.Now.AddHours(10), Medarbejder = new Medarbejder()},
-        //     new Tidsregistrering {TidsregistreringId = 2, StartTid = DateTime.Now, SlutTid = DateTime.Now.AddHours(10), Medarbejder = new Medarbejder()},
-        //     new Tidsregistrering {TidsregistreringId = 3, StartTid = DateTime.Now, SlutTid = DateTime.Now.AddHours(10), Medarbejder = new Medarbejder()}
-        // });
+        modelBuilder.Entity<Tidsregistrering>().HasKey(t => t.TidsregistreringId);
+        modelBuilder.Entity<Tidsregistrering>()
+            .HasOne(t => t.Medarbejder)
+            .WithMany(m => m.Tidsregistreringer)
+            .HasForeignKey(t => = t.Medarbejder.Initialer);
         
     }
     
