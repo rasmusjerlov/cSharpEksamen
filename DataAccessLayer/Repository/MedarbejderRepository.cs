@@ -15,7 +15,7 @@ public class MedarbejderRepository
         }
     } 
     
-    public static void tilfojMedarbejder(DTO.Model.Medarbejder medarbejder)
+    public static void tilfojMedarbejder(Medarbejder medarbejder)
     {
         using (Context.Context context = new Context.Context())
         {

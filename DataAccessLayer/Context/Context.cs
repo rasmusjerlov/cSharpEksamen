@@ -7,10 +7,10 @@ namespace DataAccessLayer.Context;
 
 public class Context : DbContext
 {
-    // public DbSet<Afdeling> Afdelinger { get; set; }
+    public DbSet<Afdeling> Afdelinger { get; set; }
     public DbSet<Medarbejder> Medarbejdere { get; set; }
-    // public DbSet<Sag> Sager { get; set; }
-    // public DbSet<Tidsregistrering> Tidsregistreringer { get; set; }
+    public DbSet<Sag> Sager { get; set; }
+    public DbSet<Tidsregistrering> Tidsregistreringer { get; set; }
 
     public Context()
     {
@@ -43,27 +43,26 @@ public class Context : DbContext
             new Medarbejder {Navn = "Mark", Cpr = "151203813", Initialer = "MK"}
         });
         
-        // modelBuilder.Entity<Afdeling>().HasKey(a => a.AfdelingsNr);
-        // modelBuilder.Entity<Afdeling>().HasData(new Afdeling[] {
-        //     new Afdeling {AfdelingsNavn = "IT", AfdelingsNr = 1},
-        //     new Afdeling {AfdelingsNavn = "HR", AfdelingsNr = 2},
-        //     new Afdeling {AfdelingsNavn = "Salg", AfdelingsNr = 3}
-        // });
+        modelBuilder.Entity<Afdeling>().HasKey(a => a.AfdelingsNr);
+        modelBuilder.Entity<Afdeling>().HasData(new Afdeling[] {
+            new Afdeling {AfdelingsNavn = "IT", AfdelingsNr = 1},
+            new Afdeling {AfdelingsNavn = "HR", AfdelingsNr = 2},
+            new Afdeling {AfdelingsNavn = "Salg", AfdelingsNr = 3}
+        });
         //
-        // modelBuilder.Entity<Sag>().HasKey(s => s.Sagsnr);
-        // modelBuilder.Entity<Sag>().HasData(new Sag[] {
-        //     new Sag {Sagsnr = 1, Overskrift = "Sag1", Beskrivelse = "Sag for IT afdeling"},
-        //     new Sag {Sagsnr = 2, Overskrift = "Sag2", Beskrivelse = "Sag for HR afdeling"},
-        //     new Sag {Sagsnr = 3, Overskrift = "Sag3", Beskrivelse = "Sag for salgsafdeling"}
-        // });
-        // modelBuilder.Entity<Tidsregistrering>().HasKey(t => t.StartTid);
-        // modelBuilder.Entity<Tidsregistrering>().HasData(new Tidsregistrering[] {
-        //     new Tidsregistrering {StartTid = DateTime.Now, SlutTid = DateTime.Now.AddHours(10), },
-        //     new Tidsregistrering {StartTid = DateTime.Now, SlutTid = DateTime.Now.AddHours(10), Medarbejder = new Medarbejder()},
-        //     new Tidsregistrering {StartTid = DateTime.Now, SlutTid = DateTime.Now.AddHours(10), Medarbejder = new Medarbejder()}
-        // });
-        //
-        // modelBuilder.Entity<Tidsregistrering>().HasOne(t => t.Medarbejder).WithMany().HasForeignKey(t => t.Medarbejder);
+        modelBuilder.Entity<Sag>().HasKey(s => s.Sagsnr);
+        modelBuilder.Entity<Sag>().HasData(new Sag[] {
+            new Sag {Sagsnr = 1, Overskrift = "Sag1", Beskrivelse = "Sag for IT afdeling"},
+            new Sag {Sagsnr = 2, Overskrift = "Sag2", Beskrivelse = "Sag for HR afdeling"},
+            new Sag {Sagsnr = 3, Overskrift = "Sag3", Beskrivelse = "Sag for salgsafdeling"}
+        });
+        modelBuilder.Entity<Tidsregistrering>().HasKey(t => t.TidsregistreringId);
+        modelBuilder.Entity<Tidsregistrering>().HasData(new Tidsregistrering[] {
+            new Tidsregistrering {StartTid = DateTime.Now, SlutTid = DateTime.Now.AddHours(10), },
+            new Tidsregistrering {StartTid = DateTime.Now, SlutTid = DateTime.Now.AddHours(10), Medarbejder = new Medarbejder()},
+            new Tidsregistrering {StartTid = DateTime.Now, SlutTid = DateTime.Now.AddHours(10), Medarbejder = new Medarbejder()}
+        });
+        
     }
     
 }

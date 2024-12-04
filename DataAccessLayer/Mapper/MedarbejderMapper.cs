@@ -39,26 +39,5 @@ internal class MedarbejderMapper
         return retur;
     }
     
-    internal static DTO.Model.Afdeling AfdelingDetail(Afdeling afdeling)
-    {
-        DTO.Model.Afdeling retur = new DTO.Model.Afdeling();
-        retur.AfdelingsNavn = afdeling.AfdelingsNavn;
-        retur.AfdelingsNr = afdeling.AfdelingsNr;
-        retur.medarbejderList = MedarbejderMapper.Map(afdeling.medarbejderList);
-        return retur;
-    }
     
-    public static DTO.Model.AfdelingOverview Map(Afdeling afdeling)
-    {
-        return new DTO.Model.AfdelingOverview(afdeling.AfdelingsNavn, afdeling.AfdelingsNr);
-    }
-    
-    public static Afdeling Map(DTO.Model.AfdelingOverview dtoAfdeling)
-    {
-        return new Afdeling
-        {
-            AfdelingsNavn = dtoAfdeling.AfdelingsNavn,
-            AfdelingsNr = dtoAfdeling.AfdelingsNr
-        };
-    }
 }

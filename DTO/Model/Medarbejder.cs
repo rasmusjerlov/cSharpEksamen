@@ -7,7 +7,6 @@ public class Medarbejder
     public string Navn { get; set; }
     public string Cpr { get; set; }
     
-    [Required]
     public string Initialer { get; set; }
 
     public Medarbejder()
