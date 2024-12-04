@@ -5,11 +5,11 @@ namespace DataAccessLayer.Repository;
 
 public class SagRepository
 {
-    public static Sag hentSag(int sagsnr)
+    public static Sag hentSag(int sagid)
     {
         using (Context.Context context = new Context.Context())
         {
-            return SagMapper.Map(context.Sager.Find(sagsnr));
+            return SagMapper.Map(context.Sager.Find(sagid));
         }
     }
     
@@ -26,7 +26,7 @@ public class SagRepository
     {
         using (Context.Context context = new Context.Context())
         {
-            Model.Sag dataSag = context.Sager.Find(sag.Sagsnr);
+            Model.Sag dataSag = context.Sager.Find(sag.SagId);
             SagMapper.Update(sag, dataSag);
             context.SaveChanges();
         }

@@ -2,15 +2,15 @@ namespace DataAccessLayer.Model;
 
 public class Sag
 {
-    public int Sagsnr { get; set; }
+    public int SagId { get; set; }
     public string Overskrift { get; set; }
     public string Beskrivelse { get; set; }
-    public Afdeling Afdeling { get; set; }
+    
     public List<Tidsregistrering> TidsregistreringerList { get; set; }
 
-    public Sag(int sagsnr, string overskrift, string beskrivelse)
+    public Sag(int sagid, string overskrift, string beskrivelse)
     {
-        Sagsnr = sagsnr;
+        SagId = sagid;
         Overskrift = overskrift;
         Beskrivelse = beskrivelse;
     }
@@ -27,8 +27,5 @@ public class Sag
         }
     }
 
-    public override string ToString()
-    {
-        return $"Sagsnr: {Sagsnr}, Overskrift: {Overskrift}, Beskrivelse: {Beskrivelse}, Afdeling: {Afdeling}, Tidsregistreringer: {TidsregistreringerList}";
-    }
+    
 }

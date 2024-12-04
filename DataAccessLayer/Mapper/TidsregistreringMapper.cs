@@ -13,6 +13,7 @@ internal class TidsregistreringMapper
     {
         return new Tidsregistrering
         {
+            TidsregistreringId = dtoTidsregistrering.TidsregistreringId,
             StartTid = dtoTidsregistrering.StartTid,
             SlutTid = dtoTidsregistrering.SlutTid
         };

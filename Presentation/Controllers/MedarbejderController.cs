@@ -9,7 +9,7 @@ public class MedarbejderController : Controller
     // GET
     public IActionResult MedarbejderView()
     {
-        var medarbejdere = _context.Medarbejdere.ToList();
-        return View(medarbejdere);
+        
+        return View();
     }
 }

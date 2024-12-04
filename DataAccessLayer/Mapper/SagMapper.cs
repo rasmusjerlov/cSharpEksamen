@@ -6,19 +6,20 @@ internal class SagMapper
 {
     public static DTO.Model.Sag Map(Sag sag)
     {
-        return new DTO.Model.Sag(sag.Sagsnr, sag.Overskrift, sag.Beskrivelse);
+        return new DTO.Model.Sag(sag.SagId, sag.Overskrift, sag.Beskrivelse);
     }
     public static Sag Map(DTO.Model.Sag dtoSag)
     {
         return new Sag
         {
-            Sagsnr = dtoSag.Sagsnr,
+            SagId = dtoSag.SagId,
             Overskrift = dtoSag.Overskrift,
             Beskrivelse = dtoSag.Beskrivelse
         };
     }
     internal static void Update(DTO.Model.Sag sag, Sag dataSag)
     {
+        dataSag.SagId = sag.SagId;
         dataSag.Overskrift = sag.Overskrift;
         dataSag.Beskrivelse = sag.Beskrivelse;
     }
