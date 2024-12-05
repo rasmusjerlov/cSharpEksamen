@@ -17,7 +17,7 @@ public class Context : DbContext
 
     public Context()
     {
-        Database.EnsureDeleted();
+        
         bool created = Database.EnsureCreated();
         if (created)
         {
@@ -41,6 +41,8 @@ public class Context : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Medarbejder>().HasKey(m => m.Initialer);
+        modelBuilder.Entity<Medarbejder>().HasMany(m => m.Afdelinger)
+            .WithMany(a => a.Medarbejdere);
         modelBuilder.Entity<Medarbejder>().HasData(new Medarbejder[] {
             new Medarbejder {Navn = "Mikkel", Cpr = "123123123123", Initialer = "MA"},  
             new Medarbejder {Navn = "Abu", Cpr = "123123123123", Initialer = "AB"},
@@ -50,6 +52,13 @@ public class Context : DbContext
         });
         
         modelBuilder.Entity<Afdeling>().HasKey(a => a.AfdelingNr);
+        modelBuilder.Entity<Afdeling>().HasMany(a => a.Tidsregistreringer)
+            .WithOne(t => t.Afdeling)
+            .HasForeignKey(t => t.AfdelingNr);
+        modelBuilder.Entity<Afdeling>().HasMany(a => a.Sager)
+            .WithOne(s => s.Afdeling);
+        modelBuilder.Entity<Afdeling>().HasMany(a => a.Medarbejdere)
+            .WithMany(m => m.Afdelinger);
         modelBuilder.Entity<Afdeling>().HasData(new Afdeling[] {
             new Afdeling {AfdelingNavn = "IT", AfdelingNr = 1},
             new Afdeling {AfdelingNavn = "HR", AfdelingNr = 2},
@@ -60,13 +69,13 @@ public class Context : DbContext
         modelBuilder.Entity<Sag>()
             .HasOne(s => s.Afdeling)
             .WithMany(a => a.Sager)
-            .HasForeignKey(s => s.AfdelingsNr)
+            .HasForeignKey(s => s.AfdelingNr)
             .OnDelete(DeleteBehavior.Restrict);
         
         modelBuilder.Entity<Sag>().HasData(new Sag[] {
-            new Sag {SagId = 1, Overskrift = "Sag1", Beskrivelse = "Sag for IT afdeling", AfdelingsNr = 1},
-            new Sag {SagId = 2, Overskrift = "Sag2", Beskrivelse = "Sag for HR afdeling", AfdelingsNr = 2},
-            new Sag {SagId = 3, Overskrift = "Sag3", Beskrivelse = "Sag for salgsafdeling", AfdelingsNr = 3}
+            new Sag {SagId = 1, Overskrift = "Sag1", Beskrivelse = "Sag for IT afdeling", AfdelingNr = 1},
+            new Sag {SagId = 2, Overskrift = "Sag2", Beskrivelse = "Sag for HR afdeling", AfdelingNr = 2},
+            new Sag {SagId = 3, Overskrift = "Sag3", Beskrivelse = "Sag for salgsafdeling", AfdelingNr = 3}
         });
         
         modelBuilder.Entity<Tidsregistrering>().HasKey(t => t.TidsregistreringId);
@@ -75,7 +84,15 @@ public class Context : DbContext
             .WithMany(m => m.Tidsregistreringer)
             .HasForeignKey(t => t.MedarbejderInitialer)
             .OnDelete(DeleteBehavior.Restrict);
-
+        
+        modelBuilder.Entity<Tidsregistrering>().HasOne(t => t.Sag)
+            .WithMany(s => s.Tidsregistreringer)
+            .OnDelete(DeleteBehavior.Restrict);
+        
+        modelBuilder.Entity<Tidsregistrering>()
+            .Property(t => t.SagId)
+            .IsRequired(false);
+        
     }
     
 }

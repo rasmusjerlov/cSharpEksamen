@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using DataAccessLayer.Context;
 using DataAccessLayer.Mapper;
 using DataAccessLayer.Model;
@@ -34,15 +35,32 @@ public class MedarbejderRepository
             context.SaveChanges();
         }
     }
+    
+    public static void sletMedarbejder(Medarbejder medarbejder)
+    {
+        using (Context.Context context = new Context.Context())
+        {
+            DataAccessLayer.Model.Medarbejder dataMedarbejder = MedarbejderMapper.Map(medarbejder);
+            context.Medarbejdere.Find(medarbejder.Initialer);
+            context.Medarbejdere.Remove(dataMedarbejder);
+            context.SaveChanges();
+        }
+    }
 
     public static List<Medarbejder> hentAlleMedarbejdere()
     {
         using (Context.Context context = new Context.Context())
         {
-            return context.Medarbejdere
-                .Select(m => MedarbejderMapper.Map(m))
-                .ToList();
+            List<Medarbejder> retur = new List<Medarbejder>();
+            foreach (var m in context.Medarbejdere)
+            {
+                retur.Add(MedarbejderMapper.Map(m));
+            }
+
+            return retur;
         }
+        
+
     }
     
 }

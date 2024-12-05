@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using DataAccessLayer.Mapper;
 using DTO.Model;
 
@@ -31,13 +32,28 @@ public class SagRepository
             context.SaveChanges();
         }
     }
+    
+    public static void sletSag(Sag sag)
+    {
+        using (Context.Context context = new Context.Context())
+        {
+            DataAccessLayer.Model.Sag dataSag = SagMapper.Map(sag);
+            context.Sager.Find(sag.SagId);
+            context.Sager.Remove(dataSag);
+            context.SaveChanges();
+        }
+    }
     public static List<Sag> hentAlleSager()
     {
         using (Context.Context context = new Context.Context())
         {
-            return context.Sager
-                .Select(s => SagMapper.Map(s))
-                .ToList();
+            List<Sag> retur = new List<Sag>();
+            foreach (var sag in context.Sager)
+            {
+                retur.Add(SagMapper.Map(sag));
+            }
+
+            return retur;
         }
     }
 }

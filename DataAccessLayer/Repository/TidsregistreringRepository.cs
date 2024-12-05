@@ -13,12 +13,11 @@ public class TidsregistreringRepository
         }
     }
     
-    public static void tilfojTidsregistrering(Tidsregistrering tidsregistrering)
+    public static void tilfojTidsregistrering(DTO.Model.Tidsregistrering tidsregistrering)
     {
         using (Context.Context context = new Context.Context())
         {
-            DataAccessLayer.Model.Tidsregistrering dataTidsregistrering = TidsregistreringMapper.Map(tidsregistrering);
-            context.Tidsregistreringer.Add(dataTidsregistrering);
+            context.Tidsregistreringer.Add(TidsregistreringMapper.Map(tidsregistrering));
             context.SaveChanges();
         }
     }
@@ -33,13 +32,28 @@ public class TidsregistreringRepository
         }
     }
     
+    public static void sletTidsregistrering(Tidsregistrering tidsregistrering)
+    {
+        using (Context.Context context = new Context.Context())
+        {
+            DataAccessLayer.Model.Tidsregistrering dataTidsregistrering = TidsregistreringMapper.Map(tidsregistrering);
+            context.Tidsregistreringer.Find(tidsregistrering.TidsregistreringId);
+            context.Tidsregistreringer.Remove(dataTidsregistrering);
+            context.SaveChanges();
+        }
+    }
+    
     public static List<Tidsregistrering> hentAlleTidsregistreringer()
     {
         using (Context.Context context = new Context.Context())
         {
-            return context.Tidsregistreringer
-                .Select(t => TidsregistreringMapper.Map(t))
-                .ToList();
+            List<Tidsregistrering> retur = new List<Tidsregistrering>();
+            foreach (var t in context.Tidsregistreringer)
+            {
+                retur.Add(TidsregistreringMapper.Map(t));
+            }
+
+            return retur;
         }
     }
 }

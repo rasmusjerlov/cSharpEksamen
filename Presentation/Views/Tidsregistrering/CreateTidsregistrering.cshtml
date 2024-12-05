@@ -1,0 +1,36 @@
+@model DTO.Model.Tidsregistrering
+
+@{
+    ViewBag.Title = "Tidsregistreringer";
+}
+
+<h2>Tidsregistreringer</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Medarbejder Initialer</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach(var t in ViewBag.Tidsregistreringer)
+        {
+        <tr>
+            <td>
+                @t.StartTid
+            </td>
+            <td>
+                @t.SlutTid
+            </td>
+            <td>
+                @t.MedarbejderInitialer
+            </td>
+        </tr>
+        }
+        </tbody>
+    </table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

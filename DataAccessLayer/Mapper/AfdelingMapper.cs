@@ -24,10 +24,10 @@ internal class AfdelingMapper
         dataAfdeling.AfdelingNavn = afdeling.AfdelingNavn;
     }
     
-    private static List<DTO.Model.Afdeling> Map(List<Afdeling> afdeling)
+    private static List<DTO.Model.Afdeling> Map(List<Afdeling> afdelinger)
     {
         List<DTO.Model.Afdeling> retur = new List<DTO.Model.Afdeling>();
-        foreach (Afdeling a in afdeling)
+        foreach (Afdeling a in afdelinger)
         {
             retur.Add(AfdelingMapper.Map(a));
         }

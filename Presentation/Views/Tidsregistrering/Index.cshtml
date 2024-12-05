@@ -1,3 +1,4 @@
+@using DataAccessLayer.Model
 @model cSharpEksamen.Presentation.Models.TidsregistreringViewModel
 
 @{
@@ -5,8 +6,7 @@
 }
 
 <h2>Tidsregistrering</h2>
-@using (Html.BeginForm("Index", "Tidsregistrering", FormMethod.Post))
-{
+<form id="tidsregistreringForm" asp-action="CreateTidsregistrering" method="post">
     <table class="table">
         <thead>
         <tr>
@@ -15,24 +15,40 @@
             <th>Medarbejder</th>
             <th>Sag</th>
             <th>Afdeling</th>
-            <th>Button</th>
-            <th>Button</th>
         </tr>
         <tr>
             <td>
-                @Html.TextBoxFor(model => model.StartTid, new { @class = "form-control", type = "datetime-local" })
+                <input type="datetime-local" class="form-control small-input" id="startTid" name="startTid" required/>
             </td>
             <td>
-                @Html.TextBoxFor(model => model.SlutTid, new { @class = "form-control", type = "datetime-local" })
+                <input type="datetime-local" class="form-control small-input" id="slutTid" name="slutTid" required/>
             </td>
             <td>
-                @Html.DropDownListFor(model => model.MedarbejderInitialer, new SelectList(ViewBag.Medarbejdere, "Initialer", "Navn"), new { @class = "form-control" })
+                <select id="medarbejderInitialer" name="medarbejderInitialer">
+                    <option value="" disabled selected>Vælg medarbejder</option>
+                    @foreach (var medarbejder in ViewBag.Medarbejdere)
+                    {
+                        <option value="@medarbejder.Initialer"> @medarbejder.Navn (@medarbejder.Initialer)</option>
+                    }
+                </select>
             </td>
             <td>
-                @Html.DropDownListFor(model => model.SagId, new SelectList(ViewBag.Sager, "SagId", "Overskrift"), new { @class = "form-control" })
+                <select id="afdelingerDropdown" name="afdelingNr">
+                    <option value="" disabled selected>Vælg afdeling</option>
+                    @foreach (var afdeling in ViewBag.Afdelinger)
+                    {
+                        <option value="@afdeling.AfdelingNr"> @afdeling.AfdelingNavn</option>
+                    }
+                </select>
             </td>
             <td>
-                @Html.DropDownListFor(model => model.Afdeling, new SelectList(ViewBag.Afdelinger, "Afdeling", "Navn"), new { @class = "form-control" })
+                <select id="sagerDropdown" name="sagId">
+                    <option value="" disabled selected>Vælg sag</option>
+                    @foreach (var sag in ViewBag.Sager)
+                    {
+                        <option value="@sag.SagId"> @sag.SagId</option>
+                    }
+                </select>
             </td>
             <td>
                 <button type="submit" class="submit">Opret Tidsregistrering</button>
@@ -40,17 +56,10 @@
         </tr>
         </thead>
     </table>
-}
+</form>
 
 <tbody>
-@foreach (var item in Model.Tidsregistreringer)
-{
-    <tr>
-        <td>@item.StartTid</td>
-        <td>@item.SlutTid</td>
-        <td>@item.Medarbejder.Initialer</td>
-    </tr>
-}
+
 </tbody>
 
 <style>

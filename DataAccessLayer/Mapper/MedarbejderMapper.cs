@@ -7,12 +7,12 @@ using Medarbejder = DataAccessLayer.Model.Medarbejder;
 namespace DataAccessLayer.Mapper;
 internal class MedarbejderMapper
 {
-    public static DTO.Model.Medarbejder Map(Medarbejder medarbejder)
+    public static DTO.Model.Medarbejder Map(DataAccessLayer.Model.Medarbejder medarbejder)
     {
         return new DTO.Model.Medarbejder(medarbejder.Navn, medarbejder.Cpr, medarbejder.Initialer);
     }
     
-    public static Medarbejder Map(DTO.Model.Medarbejder dtoMedarbejder)
+    public static DataAccessLayer.Model.Medarbejder Map(DTO.Model.Medarbejder dtoMedarbejder)
     {
         return new Medarbejder
         {
@@ -22,10 +22,10 @@ internal class MedarbejderMapper
         };
     }
 
-    internal static void Update(DTO.Model.Medarbejder medarbejder, Medarbejder dataMedarbejder)
+    internal static void Update(DTO.Model.Medarbejder medarbejderDto, Medarbejder dataMedarbejder)
     {
-        dataMedarbejder.Navn = medarbejder.Navn;
-        dataMedarbejder.Cpr = medarbejder.Cpr;
+        dataMedarbejder.Navn = medarbejderDto.Navn;
+        dataMedarbejder.Cpr = medarbejderDto.Cpr;
     }
     
     private static List<DTO.Model.Medarbejder> Map(List<Medarbejder> medarbejder)

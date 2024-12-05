@@ -6,7 +6,7 @@ internal class TidsregistreringMapper
 {
     public static DTO.Model.Tidsregistrering Map(Tidsregistrering tidsregistrering)
     {
-        return new DTO.Model.Tidsregistrering(tidsregistrering.TidsregistreringId, tidsregistrering.StartTid, tidsregistrering.SlutTid, MedarbejderMapper.Map(tidsregistrering.Medarbejder));
+        return new DTO.Model.Tidsregistrering(tidsregistrering.TidsregistreringId, tidsregistrering.StartTid, tidsregistrering.SlutTid, tidsregistrering.MedarbejderInitialer, tidsregistrering.AfdelingNr);
     }
 
     public static Tidsregistrering Map(DTO.Model.Tidsregistrering dtoTidsregistrering)
@@ -15,7 +15,10 @@ internal class TidsregistreringMapper
         {
             TidsregistreringId = dtoTidsregistrering.TidsregistreringId,
             StartTid = dtoTidsregistrering.StartTid,
-            SlutTid = dtoTidsregistrering.SlutTid
+            SlutTid = dtoTidsregistrering.SlutTid,
+            MedarbejderInitialer = dtoTidsregistrering.MedarbejderInitialer,
+            AfdelingNr = dtoTidsregistrering.AfdelingNr
+            
         };
     }
     

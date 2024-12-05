@@ -12,8 +12,8 @@ public class AfdelingRepository
             return AfdelingMapper.Map(context.Afdelinger.Find(afdelingnr));
         }
     }
-    
-    public static void tilfojAfdeling(Afdeling afdeling)
+
+    public static void opretAfdeling(Afdeling afdeling)
     {
         using (Context.Context context = new Context.Context())
         {
@@ -33,13 +33,29 @@ public class AfdelingRepository
         }
     }
 
+    public static void sletAfdeling(Afdeling afdeling)
+    {
+        using (Context.Context context = new Context.Context())
+        {
+            DataAccessLayer.Model.Afdeling dataAfdeling = AfdelingMapper.Map(afdeling);
+            context.Afdelinger.Find(afdeling.AfdelingNr);
+            context.Afdelinger.Remove(dataAfdeling);
+            context.SaveChanges();
+        }
+    }
+
     public static List<Afdeling> hentAlleAfdelinger()
     {
         using (Context.Context context = new Context.Context())
         {
-            return context.Afdelinger
-                .Select(a => AfdelingMapper.Map(a))
-                .ToList();
+            List<Afdeling> retur = new List<Afdeling>();
+            foreach (var a in context.Afdelinger)
+            {
+                retur.Add(AfdelingMapper.Map(a));
+            }
+
+            return retur;
+
         }
     }
 }

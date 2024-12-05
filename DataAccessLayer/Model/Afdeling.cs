@@ -6,7 +6,8 @@ public class Afdeling
 {
     public string AfdelingNavn { get; set; }
     public int AfdelingNr { get; set; }
-    public List<Medarbejder> medarbejderList { get; set; } = new List<Medarbejder>();
+    public List<Tidsregistrering> Tidsregistreringer { get; set; } = new List<Tidsregistrering>();
+    public List<Medarbejder> Medarbejdere { get; set; } = new List<Medarbejder>();
     public ICollection<Sag> Sager { get; set; }
 
     public Afdeling(string afdelingNavn, int afdelingNr)
@@ -21,17 +22,17 @@ public class Afdeling
 
     public void tilfojMedarbejder(Medarbejder medarbejder)
     {
-        if (!medarbejderList.Contains(medarbejder))
+        if (!Medarbejdere.Contains(medarbejder))
         {
-            medarbejderList.Add(medarbejder);
+            Medarbejdere.Add(medarbejder);
         }
     }
 
     public void fjernMedarbejder(Medarbejder medarbejder)
     {
-        if (medarbejderList.Contains(medarbejder))
+        if (Medarbejdere.Contains(medarbejder))
         {
-            medarbejderList.Remove(medarbejder);
+            Medarbejdere.Remove(medarbejder);
         }
     }
 

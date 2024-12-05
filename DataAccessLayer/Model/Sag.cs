@@ -5,7 +5,7 @@ public class Sag
     public int SagId { get; set; }
     public string Overskrift { get; set; }
     public string Beskrivelse { get; set; }
-    public int AfdelingsNr { get; set; }
+    public int AfdelingNr { get; set; }
     public Afdeling Afdeling { get; set; }
     public ICollection<Tidsregistrering> Tidsregistreringer { get; set; }
 
